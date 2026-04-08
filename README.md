@@ -2,17 +2,6 @@
 jax/haiku implementation of [Crystal Graph Convolutional Neural Networks (CGCNN)](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.120.145301)
 
 ## Installation
-Install this repository with pip in a local environment.
-
-I have tested this repository with the following environment:
-- CUDA 11.1
-- CuDNN 8
-- jax 0.2.9
-- jaxlib 0.1.61
-- haiku 0.0.4.dev0
-- python 3.8
-
-### Pip in local
 If you use a GPU, first follow [these instructions](https://github.com/google/jax#installation) to install JAX.
 
 Then, install this repository with pip:
