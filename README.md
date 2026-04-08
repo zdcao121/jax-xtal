@@ -66,6 +66,15 @@ To use a pre-trained model, you are required to specify a config file (`configs/
 python predict.py --config configs/default.json --checkpoint checkpoints/checkpoint.default.pkl --structures_dir ./data/structures --output out.csv
 ```
 
+You can also predict directly from a list of `pymatgen` `Structure` objects:
+```python
+from jax_xtal import predict_from_structures
+from jax_xtal.config import load_config
+
+config = load_config("configs/default.json")
+preds = predict_from_structures(config, "checkpoints/checkpoint.default.pkl", structures)
+```
+
 ### Train a CGCNN model
 To train a model, a JSON config file for hyperparameters is needed.
 An example config is as follows:

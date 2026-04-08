@@ -219,6 +219,22 @@ def _create_inputs(
     with open(structure_json_path, "r") as f:
         structure = Structure.from_dict(json.load(f))
 
+    return _create_inputs_from_structure(
+        structure=structure,
+        atom_featurizer=atom_featurizer,
+        bond_featurizer=bond_featurizer,
+        max_num_neighbors=max_num_neighbors,
+        cutoff=cutoff,
+    )
+
+
+def _create_inputs_from_structure(
+    structure: Structure,
+    atom_featurizer: AtomFeaturizer,
+    bond_featurizer: BondFeaturizer,
+    max_num_neighbors: int,
+    cutoff: float,
+):
     initial_atom_features = atom_featurizer(structure)
 
     # Padding neighbors might cause artificial effect, see https://github.com/txie-93/cgcnn/pull/16
@@ -233,6 +249,26 @@ def _create_inputs(
     }
 
     return inputs
+
+
+def create_dataset_from_structures(
+    structures: List[Structure],
+    atom_featurizer: AtomFeaturizer,
+    bond_featurizer: BondFeaturizer,
+    max_num_neighbors: int,
+    cutoff: float,
+):
+    dataset = [
+        _create_inputs_from_structure(
+            structure=structure,
+            atom_featurizer=atom_featurizer,
+            bond_featurizer=bond_featurizer,
+            max_num_neighbors=max_num_neighbors,
+            cutoff=cutoff,
+        )
+        for structure in structures
+    ]
+    return dataset
 
 
 def split_dataset(dataset, train_ratio=0.6, val_ratio=0.2, test_ratio=0.2):
