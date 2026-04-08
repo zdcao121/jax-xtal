@@ -19,8 +19,12 @@ Then, install this repository with pip:
 ```shell
 git clone git@github.com:lan496/jax-xtal.git
 cd jax-xtal
-python -m pip install -r requirements.txt
 python -m pip install -e .
+```
+
+For development (formatting, linting, testing, and atom-feature preparation dependencies):
+```shell
+python -m pip install -e ".[dev]"
 ```
 
 ## Usage

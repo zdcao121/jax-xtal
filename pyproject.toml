@@ -1,9 +1,55 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "jax_xtal"
+version = "0.0.1"
+description = "jax implementation of Crystal Graph Convolutional Neural Network (CGCNN)"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [
+  { name = "Kohei Shinohara", email = "kohei19950508@gmail.com" }
+]
+dependencies = [
+  "jax",
+  "jaxlib",
+  "dm-haiku",
+  "optax",
+  "numpy",
+  "pymatgen>=2022.9.21",
+  "dataclasses-json",
+  "tqdm",
+  "joblib",
+  "optuna",
+]
+
+[project.optional-dependencies]
+dev = [
+  "black",
+  "flake8",
+  "pre-commit",
+  "pytest>=6.0",
+  "mendeleev",
+  "scikit-learn",
+]
+
+[tool.setuptools]
+include-package-data = true
+zip-safe = false
+
+[tool.setuptools.packages.find]
+include = ["jax_xtal*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.flake8]
+max-line-length = 99
+exclude = ["versioneer.py"]
+select = ["C", "E", "F", "W", "B", "B950"]
+ignore = ["E203", "E231", "E501", "W503"]
 
 [tool.black]
 line-length = 99
