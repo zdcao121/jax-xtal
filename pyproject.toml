@@ -22,7 +22,6 @@ dependencies = [
   "dataclasses-json",
   "tqdm",
   "joblib",
-  "optuna",
 ]
 
 [project.optional-dependencies]
