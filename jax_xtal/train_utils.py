@@ -77,7 +77,7 @@ def restore_checkpoint(ckpt_path: str) -> Tuple[hk.Params, hk.State, Normalizer]
 
 def get_metrics_mean(list_metrics: List[Metrics]) -> Metrics:
     summary = jax.device_put(list_metrics)
-    summary = jax.tree_map(lambda x: x.mean(), list_metrics)[0]
+    summary = jax.tree_util.tree_map(lambda x: x.mean(), summary)[0]
     return summary
 
 

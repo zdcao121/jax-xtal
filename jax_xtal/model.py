@@ -113,7 +113,7 @@ class CGPooling(hk.Module):
         averaged_features = jax.ops.segment_sum(
             atom_features,
             segment_ids,
-            num_segments=self._batch_size,
+            num_segments=num_atoms.shape[0],
             indices_are_sorted=True,
             unique_indices=False,
         )  # (batch_size, num_atom_features)
