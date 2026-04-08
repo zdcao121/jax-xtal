@@ -2,7 +2,7 @@
 jax/haiku implementation of [Crystal Graph Convolutional Neural Networks (CGCNN)](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.120.145301)
 
 ## Installation
-There are two choices for installing this repository, (nvidia-)docker and pip in local environment.
+Install this repository with pip in a local environment.
 
 I have tested this repository with the following environment:
 - CUDA 11.1
@@ -11,21 +11,6 @@ I have tested this repository with the following environment:
 - jaxlib 0.1.61
 - haiku 0.0.4.dev0
 - python 3.8
-
-### Docker
-If you use a GPU, make sure you have installed [a NVIDIA driver and NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#).
-```shell
-git clone git@github.com:lan496/jax-xtal.git
-cd jax-xtal
-docker build -t jax-xtal -f docker/Dockerfile .
-docker run -it --gpus all -v $(pwd):/workspace --name jax-xtal jax-xtal
-docker attach jax-xtal
-```
-In the `jax-xtal` container:
-```shell
-cd workspace
-python -m pip install -e .
-```
 
 ### Pip in local
 If you use a GPU, first follow [these instructions](https://github.com/google/jax#installation) to install JAX.
